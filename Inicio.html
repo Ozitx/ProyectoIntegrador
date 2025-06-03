@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QROVIC - Inicio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F8F8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(to right, #A4B465, #626F47); /* Gradiente verde */
+            color: white;
+            padding: 20px 40px; /* Aumenté el padding para que la barra sea más alta */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 0;
+            border-radius: 8px;
+        }
+        .header h2 {
+            font-size: 32px;
+            font-family: 'Georgia', serif;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+        .header .icon {
+            margin-right: 10px;
+        }
+        .nav {
+            background-color: #d2e099; /* Barra de color verde claro */
+            padding: 20px 40px; /* Aumenté el padding para hacerla más ancha */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav .left {
+            display: flex;
+        }
+        .nav .right {
+            display: flex;
+            justify-content: flex-end; /* Alineación de los elementos a la derecha */
+        }
+        .nav a {
+            text-decoration: none;
+            margin: 0 15px;
+            color: black; /* Cambié el color a negro para que contraste con el verde */
+            font-weight: bold;
+        }
+        .intro {
+            text-align: center;
+            padding: 30px;
+            background-color: #f1f1f1;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .main-content {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            width: 280px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative; /* Para permitir posicionar el texto sobre la imagen */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%; /* Hace que las imágenes ocupen todo el ancho de la tarjeta */
+            height: 300px; /* Define una altura fija para las imágenes */
+            object-fit: cover; /* Asegura que la imagen se recorte de manera adecuada */
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card .image-text {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            display: none; /* Inicialmente oculto */
+        }
+        .card:hover .image-text {
+            display: block; /* Mostrar el texto cuando se pasa el mouse */
+        }
+        .care-guides {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+        .footer {
+            background-color: #d2e099;
+            color: black;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera con icono y texto estilizado -->
+    <div class="header">
+        <div class="icon">
+            <img src="imagenes/qroviclogo.png" alt="Logo" width="80" height="80">
+        </div>
+        <h2>QROVIC</h2>
+    </div>
+
+    <!-- Barra de navegación -->
+    <div class="nav">
+        <div class="left">
+            <a href="Inicio.html">INICIO</a>
+            <a href="ventasplantas.html">VENTA PLANTAS</a>
+            <a href="BLOG PI.HTML">BLOG</a>
+            <a href="MÁS.html"> MÁS </a>
+        </div>
+        <div class="right">
+            <a href="CONTACTANOS.html">CONTACTANOS</a>
+            <a href="terminoscondiciones.html">TÉRMINOS Y CONDICIONES</a>
+            <a href="LoginPI.html">INICIAR SESIÓN</a>
+            <a href="MÁS.html">🛒 $0.00</a>
+        </div>
+    </div>
+
+    <!-- Introducción -->
+    <div class="intro">
+        <h2>Bienvenido a QROVIC</h2>
+        <p>En QROVIC, te ofrecemos una amplia variedad de plantas, sustratos y guías para el cuidado de tus plantas. Descubre todo lo que tenemos para ti y embellece tu hogar con la naturaleza. 🌿💚</p>
+    </div>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <div class="card">
+            <a href="ventasplantas.html">
+                <img src="imagenes/plantas.jpg" alt="Plantas">
+                <div class="image-text">Venta de Plantas</div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="BLOG PI.html">
+                <img src="imagenes/blog.jpeg" alt="Blog">
+                <div class="image-text">Explora Nuestro Blog</div>
+            </a>
+        </div>
+        <div class="card care-guides">
+            <a href="MÁS.html">
+                <img src="imagenes/mas.jpg" alt="MÁS">
+                <div class="image-text"> MÁS</div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        Vida, Impacto y Crecimiento.
+    </footer>
+</body>
+</html>

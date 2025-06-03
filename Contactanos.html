@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QROVIC - Contáctanos</title>
+    <style>
+        /* Mantener el estilo base que ya tienes en el código anterior */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .nav {
+            background-color: #d2e099; 
+            padding: 20px 40px; 
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+        }
+        .nav .left, .nav .right {
+            display: flex;
+        }
+        .nav a {
+            text-decoration: none;
+            margin: 0 15px;
+            color: black;
+            font-weight: bold;
+        }
+        .header {
+            background: linear-gradient(to right, #A4B465, #626F47);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 0;
+            border-radius: 8px;
+        }
+        .header h2 {
+            font-size: 32px; 
+            font-family: 'Georgia', serif;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+        .header .icon {
+            margin-right: 10px;
+        }
+        .container {
+            background-color: white;
+            width: 80%; 
+            margin: 30px auto;
+            padding: 40px; 
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #A4B465;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #A4B465;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera -->
+    <div class="header">
+        <div class="icon">
+            <img src="imagenes/qroviclogo.png" alt="Logo" width="80" height="80">
+        </div>
+        <h2>QROVIC</h2>
+    </div>
+    <!-- Barra de navegación -->
+    <div class="nav">
+        <div class="left">
+            <a href="Inicio.html">INICIO</a>
+            <a href="ventasplantas.html">VENTA PLANTAS</a>
+            <a href="BLOG PI.html">BLOG</a>
+            <a href="MÁS.HTML">MÁS</a>
+        </div>
+        <div class="right">
+            <a href="terminosCondiciones.html">TÉRMINOS Y CONDICIONES</a>
+            <a href="LoginPI.html">INICIAR SESIÓN</a>
+            <a href="MÁS.html">🛒 $0.00</a>
+        </div>
+    </div>
+
+
+
+    <!-- Contenido -->
+    <div class="container">
+        <h3>Contáctanos</h3>
+        <p>¿Tienes alguna duda o sugerencia? ¡Nos encantaría saber de ti!</p>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

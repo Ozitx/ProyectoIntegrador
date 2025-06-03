@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QROVIC - Venta de Plantas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F8F8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(to right, #A4B465, #626F47); /* Gradiente verde */
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 0;
+            border-radius: 8px;
+        }
+
+        .header h2 {
+            font-size: 32px;
+            font-family: 'Georgia', serif;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .nav {
+            background-color: #d2e099;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav .left {
+            display: flex;
+        }
+
+        .nav .right {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav a {
+            text-decoration: none;
+            margin: 0 15px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 30px;
+            background-color: #f1f1f1;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            width: 280px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 320px; /* Asegura que la tarjeta tenga suficiente altura */
+        }
+
+        .card img {
+            width: 100%; /* Hace que las imágenes ocupen todo el ancho de la tarjeta */
+            height: 250px; /* Tamaño fijo para las imágenes */
+            object-fit: cover; /* Asegura que la imagen se recorte de manera adecuada */
+            border-radius: 15px;
+        }
+        .card .image-text {
+            position: absolute;
+            bottom: 120px; /* Ajustado para que no cubra el área del precio */
+            left: 50%;
+            transform: translateX(-40%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            display: none;
+        }
+
+        .card:hover .image-text {
+            display: block;
+        }
+
+        .card .add-to-cart-btn {
+            margin-top: auto; /* Empuja el botón hacia el fondo */
+        }
+        .add-to-cart-btn {
+            background-color: #A4B465;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: auto; /* Empuja el botón hacia el fondo */
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #626F47;
+        }
+
+        .footer {
+            background-color: #d2e099;
+            color: black;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        /* Estilo del modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .cart-item {
+            margin: 10px 0;
+        }
+
+               .card p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .cart-actions button {
+            background-color: #A4B465;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .card:hover .image-text {
+            display: block;
+        }
+
+        .cart-actions button:hover {
+            background-color: #626F47;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <div class="header">
+        <div class="icon">
+            <img src="imagenes/qroviclogo.png" alt="Logo" width="80" height="80">
+        </div>
+        <h2>QROVIC</h2>
+    </div>
+
+    <!-- Barra de navegación -->
+    <div class="nav">
+        <div class="left">
+            <a href="Inicio.html">INICIO</a>
+            <a href="BLOG PI.html">BLOG</a>
+            <a href="VentasPlantas.html"> Venta de plantas </a>
+        </div>
+        <div class="right">
+            <a href="CONTACTANOS.html">CONTACTANOS</a>
+            <a href="terminoscondiciones.html">TÉRMINOS Y CONDICIONES</a>
+            <a href="LoginPI.html">INICIAR SESIÓN</a>
+            <!-- Botón del carrito que abrirá el modal -->
+            <a href="javascript:void(0);" id="cart-icon" onclick="openCartModal()">🛒 $0.00</a>
+        </div>
+    </div>
+
+    <!-- Introducción -->
+    <div class="intro">
+        <h2>Más productos</h2>
+        <p>Cultiva tu amor por las plantas con nuestros accesorios diseñados para hacerlas florecer. 🌿✨</p>
+    </div>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <!-- Producto 1 -->
+        <div class="card" data-price="70.00" data-name="Juego de herramientas">
+            <img src="imagenes/juegoherramientas.jpg" alt="Complemento 1">
+            <div class="image-text">Herramientas</div>
+            <p><strong>$70.00</strong></p>
+            <button class="add-to-cart-btn">Añadir al carrito</button>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="card" data-price="125.75" data-name="Sustrato">
+            <img src="imagenes/sustrato.png" alt="Complemento 2">
+            <div class="image-text">Sustrato</div>
+            <p><strong>$125.75</strong></p>
+            <button class="add-to-cart-btn">Añadir al carrito</button>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="card" data-price="75.25" data-name="Maceta">
+            <img src="imagenes/maceta.jpg" alt="Complemento 3">
+            <div class="image-text">Maceta</div>
+            <p><strong>$75.25</strong></p>
+            <button class="add-to-cart-btn">Añadir al carrito</button>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="card" data-price="280.00" data-name="Antiplagas">
+            <img src="imagenes/repelente.png" alt="Complemento 4">
+            <div class="image-text">Antiplagas</div>
+            <p><strong>$280.00</strong></p>
+            <button class="add-to-cart-btn">Añadir al carrito</button>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        Vida, Impacto y Crecimiento.
+    </footer>
+
+    <!-- Modal del carrito -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCartModal()">&times;</span>
+            <h2>Carrito de Compras</h2>
+            <div id="cart-items"></div>
+            <div class="cart-actions">
+                <button onclick="emptyCart()">Vaciar Carrito</button>
+                <button onclick="checkout()">Comprar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript para gestionar el carrito -->
+    <script>
+        let totalPrice = 0;
+        let cartItems = [];
+
+        // Añadir productos al carrito
+        const cartButtons = document.querySelectorAll('.add-to-cart-btn');
+        cartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.card');
+                const price = parseFloat(card.getAttribute('data-price'));
+                const name = card.getAttribute('data-name');
+
+                cartItems.push({ name, price });
+                totalPrice += price;
+                updateCart();
+            });
+        });
+
+        // Actualizar el contenido del carrito en el modal
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = ''; // Limpiar el contenido
+            cartItems.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    <p>${item.name} - $${item.price.toFixed(2)}</p>
+                    <button onclick="removeItem(${index})">Eliminar</button>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+
+            // Actualizar el total
+            const cartIcon = document.getElementById('cart-icon');
+            cartIcon.innerHTML = `🛒 $${totalPrice.toFixed(2)}`;
+        }
+
+        // Eliminar un producto del carrito
+        function removeItem(index) {
+            totalPrice -= cartItems[index].price;
+            cartItems.splice(index, 1);
+            updateCart();
+        }
+
+        // Vaciar el carrito
+        function emptyCart() {
+            cartItems = [];
+            totalPrice = 0;
+            updateCart();
+        }
+
+        // Realizar la compra
+        function checkout() {
+            if (cartItems.length === 0) {
+                alert('Tu carrito está vacío.');
+            } else {
+                alert('¡Compra realizada exitosamente!');
+                emptyCart();
+                closeCartModal();
+            }
+        }
+
+        // Mostrar el modal
+        function openCartModal() {
+            document.getElementById('cart-modal').style.display = 'block';
+        }
+
+        // Cerrar el modal
+        function closeCartModal() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
